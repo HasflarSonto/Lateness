@@ -1,0 +1,13 @@
+{
+  "name": "how-late-will-i-be",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A fun app to estimate how late your chronically late friend will be",
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo 'No build step needed'"
+  },
+  "keywords": ["late", "friends", "excuse", "fun"],
+  "author": "",
+  "license": "MIT"
+}

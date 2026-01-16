@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Late Will Antonio Be?</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating photos background - cycles through all photos -->
+    <div class="floating-photos" id="floating-photos">
+        <!-- Photo slots that will cycle through images -->
+        <div class="floating-photo" data-slot="0" style="--delay: 0s; --x: 3%; --y: 8%;"><img src="" alt="Antonio"></div>
+        <div class="floating-photo" data-slot="1" style="--delay: 1.5s; --x: 88%; --y: 12%;"><img src="" alt="Antonio"></div>
+        <div class="floating-photo" data-slot="2" style="--delay: 3s; --x: 5%; --y: 45%;"><img src="" alt="Antonio"></div>
+        <div class="floating-photo" data-slot="3" style="--delay: 4.5s; --x: 92%; --y: 50%;"><img src="" alt="Antonio"></div>
+        <div class="floating-photo" data-slot="4" style="--delay: 6s; --x: 8%; --y: 78%;"><img src="" alt="Antonio"></div>
+        <div class="floating-photo" data-slot="5" style="--delay: 7.5s; --x: 85%; --y: 82%;"><img src="" alt="Antonio"></div>
+    </div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-photo">
+                <img src="Photo/76e58ee3fad78441e8d6050a0f6741bb.jpg" alt="Antonio" class="main-photo">
+                <div class="photo-ring"></div>
+            </div>
+            <h1>How Late Will <span class="name-highlight">Antonio</span> Be?</h1>
+            <p class="tagline">The official lateness predictor for the chronically time-challenged</p>
+        </div>
+
+        <!-- Question Form -->
+        <div id="question-form" class="card glass-card">
+            <div class="card-header">
+                <span class="card-icon">🔮</span>
+                <span>Predict the Lateness</span>
+            </div>
+
+            <div class="form-section">
+                <label class="question">
+                    <span class="question-icon">🍺</span>
+                    Is there alcohol at this event?
+                </label>
+                <div class="toggle-group">
+                    <button type="button" class="toggle-btn" data-field="alcohol" data-value="yes">
+                        <span class="btn-icon">🍻</span>
+                        Yes, open bar
+                    </button>
+                    <button type="button" class="toggle-btn" data-field="alcohol" data-value="no">
+                        <span class="btn-icon">🧃</span>
+                        Nope, dry event
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label class="question">
+                    <span class="question-icon">🕐</span>
+                    What time is the event?
+                </label>
+                <div class="toggle-group grid-2">
+                    <button type="button" class="toggle-btn" data-field="time" data-value="morning">
+                        <span class="btn-icon">🌅</span>
+                        Morning
+                    </button>
+                    <button type="button" class="toggle-btn" data-field="time" data-value="afternoon">
+                        <span class="btn-icon">☀️</span>
+                        Afternoon
+                    </button>
+                    <button type="button" class="toggle-btn" data-field="time" data-value="evening">
+                        <span class="btn-icon">🌆</span>
+                        Evening
+                    </button>
+                    <button type="button" class="toggle-btn" data-field="time" data-value="night">
+                        <span class="btn-icon">🌙</span>
+                        Night
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label class="question">
+                    <span class="question-icon">⭐</span>
+                    How important is this event?
+                </label>
+                <div class="toggle-group grid-2">
+                    <button type="button" class="toggle-btn" data-field="importance" data-value="critical">
+                        <span class="btn-icon">💀</span>
+                        Life or death
+                    </button>
+                    <button type="button" class="toggle-btn" data-field="importance" data-value="important">
+                        <span class="btn-icon">🎂</span>
+                        Pretty important
+                    </button>
+                    <button type="button" class="toggle-btn" data-field="importance" data-value="casual">
+                        <span class="btn-icon">🛋️</span>
+                        Casual hangout
+                    </button>
+                    <button type="button" class="toggle-btn" data-field="importance" data-value="optional">
+                        <span class="btn-icon">🤷</span>
+                        Meh, optional
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label class="question">
+                    <span class="question-icon">🌧️</span>
+                    What's the weather like?
+                </label>
+                <div class="toggle-group">
+                    <button type="button" class="toggle-btn" data-field="weather" data-value="perfect">
+                        <span class="btn-icon">🌈</span>
+                        Perfect
+                    </button>
+                    <button type="button" class="toggle-btn" data-field="weather" data-value="okay">
+                        <span class="btn-icon">⛅</span>
+                        It's fine
+                    </button>
+                    <button type="button" class="toggle-btn" data-field="weather" data-value="bad">
+                        <span class="btn-icon">🌧️</span>
+                        Terrible
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label class="question">
+                    <span class="question-icon">📅</span>
+                    What day of the week?
+                </label>
+                <div class="toggle-group">
+                    <button type="button" class="toggle-btn" data-field="day" data-value="weekday">
+                        <span class="btn-icon">💼</span>
+                        Weekday
+                    </button>
+                    <button type="button" class="toggle-btn" data-field="day" data-value="friday">
+                        <span class="btn-icon">🎉</span>
+                        Friday
+                    </button>
+                    <button type="button" class="toggle-btn" data-field="day" data-value="weekend">
+                        <span class="btn-icon">😴</span>
+                        Weekend
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label class="question">
+                    <span class="question-icon">🍸</span>
+                    Did Antonio go out last night?
+                </label>
+                <div class="toggle-group">
+                    <button type="button" class="toggle-btn" data-field="hungover" data-value="yes">
+                        <span class="btn-icon">🤢</span>
+                        Definitely hungover
+                    </button>
+                    <button type="button" class="toggle-btn" data-field="hungover" data-value="maybe">
+                        <span class="btn-icon">😵‍💫</span>
+                        Maybe a little
+                    </button>
+                    <button type="button" class="toggle-btn" data-field="hungover" data-value="no">
+                        <span class="btn-icon">✨</span>
+                        Fresh as a daisy
+                    </button>
+                </div>
+            </div>
+
+            <button id="calculate-btn" class="primary-btn" disabled>
+                <span class="btn-text">Calculate Lateness</span>
+                <span class="btn-icon-right">→</span>
+            </button>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="card glass-card hidden">
+            <div class="results-header">
+                <div class="results-photo">
+                    <img src="Photo/7e3f9f09c75e2cb8946e76cefb701060.jpg" alt="Antonio" class="result-avatar">
+                </div>
+                <h2>Antonio will be...</h2>
+                <div id="lateness-display" class="lateness-time">
+                    <span class="time-number">0</span>
+                    <span class="time-label">minutes late</span>
+                </div>
+                <div class="lateness-message" id="lateness-message">Calculating...</div>
+            </div>
+
+            <!-- Fake Uber Tracker -->
+            <div class="uber-tracker">
+                <div class="tracker-header">
+                    <div class="tracker-title">
+                        <span class="tracker-icon">📍</span>
+                        <span>Live Location</span>
+                    </div>
+                    <div id="eta" class="eta-badge">ETA: --</div>
+                </div>
+
+                <div class="map-container">
+                    <div class="fake-map">
+                        <div class="map-grid"></div>
+                        <div class="map-road">
+                            <div class="road-dashes"></div>
+                        </div>
+                        <div id="car-marker" class="car-marker">
+                            <img src="Photo/9b2a9dc2a5090547577f63f41126996a.jpg" alt="Antonio" class="car-avatar">
+                        </div>
+                        <div class="destination-marker">
+                            <span class="dest-icon">📍</span>
+                            <span class="dest-pulse"></span>
+                        </div>
+                    </div>
+                    <div class="map-labels">
+                        <span class="label-start">🛋️ Antonio's couch</span>
+                        <span class="label-end">🎯 You</span>
+                    </div>
+                </div>
+
+                <div class="driver-card">
+                    <div class="driver-photo">
+                        <img src="Photo/a5c08e70845d162458783aac2da4e56b.jpg" alt="Antonio">
+                    </div>
+                    <div class="driver-info">
+                        <div class="driver-name">Antonio</div>
+                        <div class="driver-rating">⭐ 2.3 (punctuality rating)</div>
+                    </div>
+                    <div class="driver-status" id="driver-status">"Just woke up"</div>
+                </div>
+            </div>
+
+            <!-- Excuse Section -->
+            <div class="excuse-section">
+                <div class="excuse-header">
+                    <span class="excuse-icon">💬</span>
+                    <span>The Excuse Incoming...</span>
+                </div>
+                <div id="excuse-container" class="excuse-bubble">
+                    <div class="excuse-avatar">
+                        <img src="Photo/bbdd0075f81975047430096d9c893a31.jpg" alt="Antonio">
+                    </div>
+                    <div class="excuse-content">
+                        <div class="loading-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="try-again-btn" class="secondary-btn">
+                <span>Try Different Scenario</span>
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with 💜 for Antonio's perpetually waiting friends</p>
+            <div class="footer-photos">
+                <img src="Photo/bea86c55677ebd488bdecd37f045242b.jpg" alt="Antonio">
+                <img src="Photo/ce47cc3a49721eb9c5226c94cfdf41f0.jpg" alt="Antonio">
+                <img src="Photo/db1991d2a35d9a89b6b6e5a66d1bb189.jpg" alt="Antonio">
+                <img src="Photo/ecb0125c78f9365606773654fba90130.jpg" alt="Antonio">
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
