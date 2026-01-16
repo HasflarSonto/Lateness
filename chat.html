@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Antonio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chat.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-page">
+        <!-- Header -->
+        <div class="chat-header">
+            <a href="index.html" class="back-button">← Back</a>
+            <div class="chat-header-profile">
+                <div class="header-avatar">
+                    <img src="Photo/76e58ee3fad78441e8d6050a0f6741bb.jpg" alt="Antonio">
+                    <span class="online-dot"></span>
+                </div>
+                <div class="header-info">
+                    <div class="header-name">
+                        Antonio Li
+                        <span class="verified">✓</span>
+                    </div>
+                    <div class="header-status">Columbia '28 · Usually responds late</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Messages -->
+        <div class="chat-messages" id="chat-messages">
+            <div class="message bot">
+                <div class="message-avatar">
+                    <img src="Photo/7e3f9f09c75e2cb8946e76cefb701060.jpg" alt="Antonio">
+                </div>
+                <div class="message-content">
+                    <p>yo what's up! i'm antonio - columbia '28, studying architecture & cs. i build stuff with AI, do research on 3D generation and database visualization, and yes i'm chronically late to everything lol. what do you wanna chat about?</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="chat-input-container">
+            <div class="chat-input-wrapper">
+                <input type="text" id="chat-input" placeholder="Ask Antonio anything..." autocomplete="off">
+                <button id="send-button" class="send-button">
+                    <span>Send</span>
+                </button>
+            </div>
+            <div class="chat-disclaimer">AI chatbot with Antonio's personality · Not actually Antonio (he's probably running late)</div>
+        </div>
+    </div>
+
+    <script src="chat.js"></script>
+</body>
+</html>

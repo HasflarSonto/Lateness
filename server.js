@@ -33,6 +33,93 @@ try {
     console.log('No .env file found, using environment variable');
 }
 
+async function handleChatAPI(req, res) {
+    let body = '';
+    req.on('data', chunk => { body += chunk; });
+    req.on('end', async () => {
+        try {
+            const { message, history } = JSON.parse(body);
+
+            if (!ANTHROPIC_API_KEY) {
+                res.writeHead(500, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ error: 'API key not configured' }));
+                return;
+            }
+
+            const systemPrompt = `You are Antonio Li, a Columbia University student (Class of 2028). You're chatting casually with someone who found your "How Late Will I Be?" website.
+
+ABOUT YOU:
+- Studying Architecture & Computer Science at Columbia College
+- Research Fellow at Laidlaw Foundation working on LLMs for 3D object generation
+- Research Fellow at Columbia Data Science Institute working on database visualization
+- Co-founded Truely (AI detection software for interviews) at Founders Inc in SF
+- Previously worked at Columbia Space Initiative as a Software Engineer
+- Did an internship at L&A Group in Shenzhen working on parametric algorithms for urban greenery
+- Took architecture at Cornell summer program
+
+YOUR PROJECTS:
+- Fyros: "Fitbit for your Brain" - a brain monitoring wearable
+- Truely: Anti-cheating software for interviews ("Hire the best candidate, not the best AI")
+- Desert Bulwark: Architectural submission for Buildner Microhome Competition
+- Procedurally Generated Firebreaks: Algorithm using landfire.gov data to simulate wildfires
+
+YOUR PUBLICATIONS:
+- "A Formalism and Library for Database Visualization" (Arxiv, Apr 2025)
+- "AI Algorithm for the Generation of Three-Dimensional Accessibility Ramps" (Arxiv, Sep 2023)
+
+YOUR PATENT:
+- "A computer vision analysis method and system for urban public space design" (CN115600267B)
+
+YOUR SKILLS: Python, Java, JavaScript, Rhino 3D, Grasshopper, AutoCAD, SOLIDWORKS, LLMs, 3D CAD, Parametric Design
+
+YOUR PERSONALITY:
+- Casual, friendly, uses lowercase a lot
+- Says "yo", "lol", "ngl", "tbh", "haha", "lowkey"
+- Self-aware about being chronically late to everything
+- Enthusiastic about projects but not braggy
+- Short to medium responses, conversational
+- You have a cat that you love
+
+If someone asks about hiring or working together, be open to it and mention your LinkedIn: linkedin.com/in/antonio-li-/`;
+
+            const messages = [
+                ...(history || []).map(msg => ({
+                    role: msg.role,
+                    content: msg.content
+                })),
+                { role: 'user', content: message }
+            ];
+
+            const response = await fetch('https://api.anthropic.com/v1/messages', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': ANTHROPIC_API_KEY,
+                    'anthropic-version': '2023-06-01'
+                },
+                body: JSON.stringify({
+                    model: 'claude-3-5-haiku-20241022',
+                    max_tokens: 300,
+                    system: systemPrompt,
+                    messages: messages
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`API request failed: ${response.status}`);
+            }
+
+            const data = await response.json();
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ response: data.content[0].text }));
+        } catch (error) {
+            console.error('Chat error:', error);
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: 'Failed to generate response' }));
+        }
+    });
+}
+
 async function handleExcuseAPI(req, res) {
     let body = '';
     req.on('data', chunk => { body += chunk; });
@@ -108,9 +195,13 @@ Just respond with the excuse text, nothing else. No quotes around it.`;
 const server = http.createServer(async (req, res) => {
     console.log(`${req.method} ${req.url}`);
 
-    // Handle API route
+    // Handle API routes
     if (req.url === '/api/generate-excuse' && req.method === 'POST') {
         return handleExcuseAPI(req, res);
+    }
+
+    if (req.url === '/api/chat' && req.method === 'POST') {
+        return handleChatAPI(req, res);
     }
 
     // Serve static files
